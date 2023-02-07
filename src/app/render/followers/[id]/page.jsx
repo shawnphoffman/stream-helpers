@@ -12,7 +12,8 @@ const fetchUrl = process.env.TWITCH_FOLLOWER_API_URL
 ╚═╝      ╚═════╝ ╚══════╝╚══════╝ ╚═════╝  ╚══╝╚══╝ ╚══════╝╚═╝  ╚═╝╚══════╝
 */
 
-export default async function Page({ params, searchParams }) {
+export default async function Page(props) {
+	const { params, searchParams } = props
 	const { id } = params
 
 	// TODO
@@ -33,5 +34,10 @@ export default async function Page({ params, searchParams }) {
 	const json = await response.json()
 	const followerCount = json.total
 
-	return <TwitchPoller goal={goal} poller={url} count={followerCount} interval={interval} style={style} prefix={prefix} debug={debug} />
+	return (
+		<>
+			<TwitchPoller goal={goal} poller={url} count={followerCount} interval={interval} style={style} prefix={prefix} debug={debug} />
+			<div>{JSON.stringify({ props }, null, 2)}</div>
+		</>
+	)
 }
