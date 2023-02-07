@@ -3,7 +3,6 @@
 import { memo, useMemo } from 'react'
 import useSWR from 'swr'
 
-// import useSWR from 'swr'
 import ObsText from '@/components/text/ObsText'
 
 /*
@@ -18,8 +17,6 @@ import ObsText from '@/components/text/ObsText'
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 const TwitchPoller = ({ goal, interval, count, pollerUrl, prefix, style, debug }) => {
-	console.log({ goal, interval, count, pollerUrl, prefix, style, debug })
-
 	const { data, error, isLoading } = useSWR(pollerUrl, fetcher, {
 		refreshInterval: interval,
 		fallbackData: { total: count },

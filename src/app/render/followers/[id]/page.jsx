@@ -1,5 +1,3 @@
-export const dynamic = 'force-dynamic'
-
 import { TextStyle } from '@/components/text/TextStyle'
 import TwitchPoller from '@/components/twitch/TwitchPoller'
 
@@ -36,10 +34,7 @@ export default async function Page(props) {
 	const json = await response.json()
 	const followerCount = json.total
 
-	return (
-		<>
-			<TwitchPoller goal={goal} poller={url} count={followerCount} interval={interval} style={style} prefix={prefix} debug={debug} />
-			<div>{JSON.stringify({ props }, null, 2)}</div>
-		</>
-	)
+	return <TwitchPoller goal={goal} poller={url} count={followerCount} interval={interval} style={style} prefix={prefix} debug={debug} />
 }
+
+export const dynamic = 'force-dynamic'
