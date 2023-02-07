@@ -73,6 +73,24 @@ video {
 	max-width: 720px;
 }
 
+a.button {
+	object-fit: cover;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	background: #45c4b0;
+	border-radius: 4px;
+	color: #012030;
+	padding: 16px 32px;
+	cursor: pointer;
+	text-align: center;
+	font-weight: bolder;
+}
+a.button:hover {
+	background: #9aeba3;
+	color: #012030;
+}
+
 /* CUSTOM */
 .examples-container {
 	margin: 16px 0px;

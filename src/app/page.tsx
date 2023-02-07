@@ -19,6 +19,7 @@ const Home = () => {
 		<>
 			<div id="title">Stream Helpers</div>
 			<div>A collection of free-to-use stream addons.</div>
+			{/*  */}
 			<h1>OBS Text Source</h1>
 			<div>Useful for displaying basic animated text (e.g. &quot;Please follow&quot;)</div>
 			<div className="examples-container">
@@ -46,6 +47,7 @@ const Home = () => {
 					<li>Debug: Enabling this will prevent the text from fading in and out</li>
 				</ul>
 			</div>
+			{/*  */}
 			<h2>Twitch Follower Goal Variant</h2>
 			<div>Useful for displaying your current follower count and, optionally, your follower goal.</div>
 			<div className="options-container">
@@ -67,6 +69,7 @@ const Home = () => {
 					</ObsText>
 				</div>
 			</div>
+			{/*  */}
 			<h2>Live Examples</h2>
 			<div className="links-container">
 				<h3>Basic &quot;Hello&quot; Text Examples</h3>
@@ -122,17 +125,48 @@ const Home = () => {
 					</li>
 				</ul>
 			</div>
+			{/*  */}
 			<h2>Link Builder</h2>
-			<Link href="/text/builder">Click here to generate your own</Link>
+			<Link href="/builder/text" className="button">
+				Click here to generate your own
+			</Link>
+
+			{/*  */}
 			<h2>OBS Setup</h2>
-			<div>Derp wow wow wow wow wow wow </div>
+			<div>More details coming soon...</div>
+			<h3>TLDR;</h3>
+			<ol>
+				<li>Add Browser Source</li>
+				<li>Paste custom URL</li>
+				<li>
+					Default custom CSS should be sufficient but make sure the following is included.{' '}
+					<pre>
+						<code>body &#123; background: rgba (0,0,0,0); &#125;</code>
+					</pre>
+				</li>
+				<li>Profit?</li>
+			</ol>
+
+			{/*  */}
 			<h1>Twitch Tools</h1>
 			<h3>User ID Lookup</h3>
-			<Link href="/twitch/lookup">/twitch/lookup</Link>
-			<h1>Tentative Roadmap</h1>- Storybook support
-			{/* https://vercel.com/guides/storybook-with-vercel */}
-			{/* https://github.com/vercel/next.js/tree/canary/examples/with-storybook */}- Variable color options - Variable in/out visibility
-			options - Variable sizing options
+			<Link href="/twitch/lookup" className="button">
+				Click here to lookup your Twitch ID
+			</Link>
+
+			{/*  */}
+			<h1>Tentative Roadmap</h1>
+			<ul>
+				<li>Storybook support</li>
+				{/* https://vercel.com/guides/storybook-with-vercel */}
+				{/* https://github.com/vercel/next.js/tree/canary/examples/with-storybook */}
+				<li>Variable color options</li>
+				<li>Variable in/out visibility options</li>
+				<li>Variable sizing options</li>
+			</ul>
+			{/*  */}
+			<h1>Feature Requests</h1>
+			<Link href="https://github.com/shawnphoffman/stream-helpers/issues/new/choose">Have a feature request, submit them here.</Link>
 		</>
 	)
 }
