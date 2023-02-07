@@ -1,200 +1,132 @@
-"use client";
+import { memo } from 'react'
+import Link from 'next/link'
 
-import { memo, useCallback, useEffect, useState } from "react";
-import { styled } from "linaria/react";
+// import styles from './page.module.css'
+import ObsText from '@/components/text/ObsText'
+import { TextStyle } from '@/components/text/TextStyle'
 
-import NativeInput from "src/components/core/NativeInput";
-import ObsText, { TextStyle } from "src/components/obs/ObsText";
+/*
+██╗  ██╗ ██████╗ ███╗   ███╗███████╗
+██║  ██║██╔═══██╗████╗ ████║██╔════╝
+███████║██║   ██║██╔████╔██║█████╗
+██╔══██║██║   ██║██║╚██╔╝██║██╔══╝
+██║  ██║╚██████╔╝██║ ╚═╝ ██║███████╗
+╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝
+*/
 
-const HorizontalRule = styled.hr`
-  margin: 32px 0px;
-`;
+const Home = () => {
+	return (
+		<>
+			<div id="title">Stream Helpers</div>
+			<div>A collection of free-to-use stream addons.</div>
+			<h1>OBS Text Source</h1>
+			<div>Useful for displaying basic animated text (e.g. &quot;Please follow&quot;)</div>
+			<div className="examples-container">
+				<h3>Examples</h3>
+				<div className="examples">
+					<ObsText textStyle={TextStyle.GRADIENT} debug>
+						Gradient Style
+					</ObsText>
+					<ObsText textStyle={TextStyle.JUMP} debug>
+						Jump Style
+					</ObsText>
+					<ObsText textStyle={TextStyle.WAVE} debug>
+						Wave Style
+					</ObsText>
+					<ObsText textStyle={TextStyle.NONE} debug>
+						None Style
+					</ObsText>
+				</div>
+			</div>
+			<div className="options-container">
+				<h3>Options</h3>
+				<ul className="options">
+					<li>Text: The text to display</li>
+					<li>Style: The style of text animation. See below</li>
+					<li>Debug: Enabling this will prevent the text from fading in and out</li>
+				</ul>
+			</div>
+			<h2>Twitch Follower Goal</h2>
+			<div>Useful for displaying your current follower count and, optionally, your follower goal.</div>
+			<div className="options-container">
+				<h3>Options</h3>
+				<ul className="options">
+					<li>ID (required): Your Twitch user ID</li>
+					<li>Goal: Your follower goal. Displayed next to your current follower count</li>
+					<li>Style: Text style to apply to the text. See above.</li>
+				</ul>
+			</div>
+			<div className="examples-container">
+				<h3>Example (Fake Data)</h3>
+				<div className="examples">
+					<ObsText textStyle={TextStyle.JUMP} debug>
+						Follower Goal: 12/15
+					</ObsText>
+				</div>
+			</div>
+			<h2>Live Examples</h2>
+			<div className="links-container">
+				<h3>Basic &quot;Hello&quot; Text Examples</h3>
+				<ul>
+					<li>
+						<Link href="/render/text?text=hello&style=jump&debug=true" target="_blank" rel="noreferrer">
+							JUMP style
+						</Link>
+					</li>
+					<li>
+						<Link href="/render/text?text=hello&style=wave&debug=true" target="_blank" rel="noreferrer">
+							WAVE style
+						</Link>
+					</li>
+					<li>
+						<Link href="/render/text?text=hello&style=gradient&debug=true" target="_blank" rel="noreferrer">
+							GRADIENT style
+						</Link>
+					</li>
+					<li>
+						<Link href="/render/text?text=hello&style=none&debug=true" target="_blank" rel="noreferrer">
+							NONE style
+						</Link>
+					</li>
+				</ul>
 
-const Video = styled.video`
-  width: 100%;
-  height: auto;
-  max-width: 720px;
-`;
+				<h3>Twitch Follower Examples</h3>
+				<ul>
+					<li>
+						<a href={`/render/followers/484182774`} target="_blank" rel="noreferrer">
+							Follower count on its own
+						</a>
+					</li>
+					<li>
+						<a href={`/render/followers/484182774?prefix=Followers:`} target="_blank" rel="noreferrer">
+							Follower count with a prefix
+						</a>
+					</li>
+					<li>
+						<a href={`/render/followers/484182774?goal=50`} target="_blank" rel="noreferrer">
+							Follower count with a goal
+						</a>
+					</li>
+					<li>
+						<a href={`/render/followers/484182774?style=jump`} target="_blank" rel="noreferrer">
+							Follower count with a custom style
+						</a>
+					</li>
+				</ul>
+			</div>
+			<h2>Link Builder</h2>
+			<Link href="/text/builder">Click here to generate your own</Link>
+			<h2>OBS Setup</h2>
+			<div>Derp wow wow wow wow wow wow </div>
+			<h1>Twitch Tools</h1>
+			<h3>User ID Lookup</h3>
+			<Link href="/twitch/lookup">/twitch/lookup</Link>
+			<h1>Tentative Roadmap</h1>- Storybook support
+			{/* https://vercel.com/guides/storybook-with-vercel */}
+			{/* https://github.com/vercel/next.js/tree/canary/examples/with-storybook */}- Variable color options - Variable in/out visibility
+			options - Variable sizing options
+		</>
+	)
+}
 
-const ExampleContainer = styled.div`
-  width: 350px;
-`;
-
-const Label = styled.label`
-  margin: 0px 8px;
-`;
-
-const Dropdown = styled.select`
-  margin: 8px 0px;
-`;
-
-const Help = () => {
-  const [debug, setDebug] = useState(true);
-  const [originalText, setOriginal] = useState("Please consider following!");
-  const [textStyle, setTextStyle] = useState(TextStyle.JUMP);
-  const [encoded, setEncoded] = useState("");
-
-  const handleTextChange = useCallback((e) => {
-    const value = e.target.value;
-    setOriginal(value);
-  }, []);
-
-  const handleStyleChange = useCallback((e) => {
-    const value = e.target.value;
-    setTextStyle(value);
-  }, []);
-
-  const handleDebugChange = useCallback((e) => {
-    const value = e.target.checked;
-    setDebug(value);
-  }, []);
-
-  useEffect(() => {
-    const temp = encodeURIComponent(originalText);
-    setEncoded(temp);
-  }, [originalText]);
-
-  return (
-    <>
-      <h1>OBS Source Help</h1>
-      <HorizontalRule />
-
-      <h2>Twitch User ID Lookup</h2>
-      <a href="/obs/twitch/lookup" target="_blank" rel="noreferrer">
-        Click here to lookup your Twitch user ID
-      </a>
-
-      <HorizontalRule />
-
-      <h2>Animated Text</h2>
-      <div>
-        Useful for displaying basic animated text (e.g. &quot;Please
-        follow&quot;)
-      </div>
-
-      <h3>Options</h3>
-      <ul>
-        <li>Text: The text to display</li>
-        <li>Style: The style of text animation. See below</li>
-        <li>
-          Debug: Enabling this will prevent the text from fading in and out
-        </li>
-      </ul>
-
-      <h3>Examples</h3>
-      <ExampleContainer>
-        <ObsText textStyle={TextStyle.GRADIENT} debug>
-          Gradient Style
-        </ObsText>
-        <ObsText textStyle={TextStyle.JUMP} debug>
-          Jump Style
-        </ObsText>
-        <ObsText textStyle={TextStyle.WAVE} debug>
-          Wave Style
-        </ObsText>
-        <ObsText textStyle={TextStyle.NONE} debug>
-          None Style
-        </ObsText>
-      </ExampleContainer>
-
-      <h3>Text Builder</h3>
-      <NativeInput
-        type="text"
-        onChange={handleTextChange}
-        value={originalText}
-      />
-      <Dropdown onChange={handleStyleChange} defaultValue={textStyle}>
-        <option>{TextStyle.GRADIENT}</option>
-        <option>{TextStyle.JUMP}</option>
-        <option>{TextStyle.WAVE}</option>
-        <option>{TextStyle.NONE}</option>
-      </Dropdown>
-      <div>
-        <input
-          type="checkbox"
-          name="debug"
-          onChange={handleDebugChange}
-          checked={debug}
-        />
-        <Label>Always visible?</Label>
-      </div>
-      <h4>Preview</h4>
-      <ObsText textStyle={textStyle} debug={debug}>
-        {originalText || ""}
-      </ObsText>
-
-      <h4>URL Preview</h4>
-      <pre>
-        /obs/text?text={encoded}&debug={debug.toString()}&style={textStyle}
-      </pre>
-      <h4>Personalized URL</h4>
-      <a
-        href={`/obs/text?text=${encoded}&debug=${debug.toString()}&style=${textStyle}`}
-        target="_blank"
-        rel="noreferrer"
-      >
-        Click here for your personalized link!
-      </a>
-
-      <HorizontalRule />
-      <h2>Follower Count</h2>
-      <div>
-        Useful for displaying your current follower count and, optionally, your
-        follower goal.
-      </div>
-      <h3>Options</h3>
-      <ul>
-        <li>ID (required): Your Twitch user ID</li>
-        <li>
-          Goal: Your follower goal. Displayed next to your current follower
-          count
-        </li>
-        <li>Style: Text style to apply to the text. See above.</li>
-      </ul>
-      <h3>Examples</h3>
-      <ul>
-        <li>
-          <a href={`/obs/followers/484182774`} target="_blank" rel="noreferrer">
-            Follower count on its own
-          </a>
-        </li>
-        <li>
-          <a
-            href={`/obs/followers/484182774?prefix=Followers:`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Follower count with a prefix
-          </a>
-        </li>
-        <li>
-          <a
-            href={`/obs/followers/484182774?goal=50`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Follower count with a goal
-          </a>
-        </li>
-        <li>
-          <a
-            href={`/obs/followers/484182774?style=jump`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Follower count with a custom style
-          </a>
-        </li>
-      </ul>
-
-      <HorizontalRule />
-      <h2>OBS Demo</h2>
-      <Video autoPlay loop muted controls>
-        <source src="/images/obs-text-demo.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </Video>
-    </>
-  );
-};
-
-export default memo(Help);
+export default memo(Home)
