@@ -12,7 +12,7 @@ const fetchUrl = process.env.TWITCH_FOLLOWER_API_URL
 ╚═╝      ╚═════╝ ╚══════╝╚══════╝ ╚═════╝  ╚══╝╚══╝ ╚══════╝╚═╝  ╚═╝╚══════╝
 */
 
-export default async function Page({ searchParams, params }) {
+export default async function Page({ params, searchParams }) {
 	const { id } = params
 
 	// TODO
