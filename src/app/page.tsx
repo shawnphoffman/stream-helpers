@@ -50,6 +50,14 @@ const Home = () => {
 			{/*  */}
 			<h2>Twitch Follower Goal Variant</h2>
 			<div>Useful for displaying your current follower count and, optionally, your follower goal.</div>
+			<div className="examples-container">
+				<h3>Example (Fake Data)</h3>
+				<div className="examples">
+					<ObsText textStyle={TextStyle.JUMP} debug>
+						Follower Goal: 12/15
+					</ObsText>
+				</div>
+			</div>
 			<div className="options-container">
 				<h3>Options</h3>
 				<ul className="options">
@@ -60,14 +68,6 @@ const Home = () => {
 					<li>Prefix: The text to put before the follower count</li>
 					{/* <li>xxx: xxx</li> */}
 				</ul>
-			</div>
-			<div className="examples-container">
-				<h3>Example (Fake Data)</h3>
-				<div className="examples">
-					<ObsText textStyle={TextStyle.JUMP} debug>
-						Follower Goal: 12/15
-					</ObsText>
-				</div>
 			</div>
 			{/*  */}
 			<h2>Live Examples</h2>
@@ -99,6 +99,11 @@ const Home = () => {
 				<h3>Twitch Follower Examples</h3>
 				<ul>
 					<li>
+						<a href={`/render/followers/484182774?style=jump&goal=50&prefix=Follower goal:&debug=true`} target="_blank" rel="noreferrer">
+							Everything & the kitchen sink
+						</a>
+					</li>
+					<li>
 						<a href={`/render/followers/484182774?debug=true`} target="_blank" rel="noreferrer">
 							Follower count on its own
 						</a>
@@ -116,11 +121,6 @@ const Home = () => {
 					<li>
 						<a href={`/render/followers/484182774?style=jump&debug=true`} target="_blank" rel="noreferrer">
 							Follower count with a custom style
-						</a>
-					</li>
-					<li>
-						<a href={`/render/followers/484182774?style=jump&goal=50&prefix=Follower goal:&debug=true`} target="_blank" rel="noreferrer">
-							Kitchen sink
 						</a>
 					</li>
 				</ul>

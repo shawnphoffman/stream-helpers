@@ -73,7 +73,8 @@ video {
 	max-width: 720px;
 }
 
-a.button {
+a.button,
+button {
 	object-fit: cover;
 	display: inline-flex;
 	justify-content: center;
@@ -86,16 +87,19 @@ a.button {
 	text-align: center;
 	font-weight: bolder;
 }
-a.button:hover {
+a.button:hover,
+button:hover {
 	background: #9aeba3;
 	color: #012030;
 }
 
 /* CUSTOM */
-.examples-container {
+.examples-container,
+.options-container {
 	margin: 16px 0px;
 }
-.examples-container h3 {
+.examples-container h3,
+.options-container h3 {
 	margin: 0;
 	padding: 8px 16px;
 	border: 1px dashed white;
@@ -104,7 +108,13 @@ a.button:hover {
 	border-top-right-radius: 8px;
 	border-bottom: none;
 }
-.examples {
+.examples-container ul,
+.options-container ul {
+	padding: 16px 32px;
+	margin: 0;
+}
+.examples,
+.options {
 	border: 1px dashed white;
 	padding: 16px;
 	border-bottom-left-radius: 8px;
