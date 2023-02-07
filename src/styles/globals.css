@@ -167,4 +167,6 @@ label {
 	margin: 0px 8px;
 }
 
-/* TODO TEMP  */
+pre.wrapped {
+	white-space: pre-wrap;
+}

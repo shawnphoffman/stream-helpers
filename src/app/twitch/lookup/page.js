@@ -55,11 +55,20 @@ const Lookup = () => {
 					<div>{userId}</div>
 				</>
 			)}
-			<h4>Data:</h4>
-			<pre>{JSON.stringify(data, null, 2)}</pre>
-			<h4>Error:</h4>
-			<pre>{JSON.stringify(error, null, 2)}</pre>
-			<h4>Loading: {isLoading.toString()}</h4>
+			{data?.data && (
+				<>
+					<h3>Data:</h3>
+					<pre className="wrapped">{JSON.stringify(data.data[0], null, 2)}</pre>
+				</>
+			)}
+			{error && (
+				<>
+					<h3>Error:</h3>
+
+					<pre className="wrapped">{JSON.stringify(error, null, 2)}</pre>
+				</>
+			)}
+			{isLoading && <h3>Loading...</h3>}
 		</>
 	)
 }
