@@ -33,3 +33,5 @@ const Render = ({ searchParams }) => {
 }
 
 export default memo(Render)
+
+export const dynamic = 'force-dynamic'
