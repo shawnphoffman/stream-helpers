@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { TextStyle } from '@/components/text/TextStyle'
 import TwitchPoller from '@/components/twitch/TwitchPoller'
 
