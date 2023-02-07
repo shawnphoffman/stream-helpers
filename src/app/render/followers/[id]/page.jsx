@@ -25,26 +25,12 @@ export default async function Page({ searchParams, params }) {
 	const debug = searchParams?.debug === 'true'
 
 	const url = `${fetchUrl}${id}?countOnly=true`
-	// const dynamicData = await fetch(url, { cache: 'no-store' })
-	// const dynamicJson = await dynamicData.json()
 
-	const revalidatedData = await fetch(url, {
-		cache: 'no-store',
-		next: { revalidate: 10 },
+	const response = await fetch(url, {
+		next: { revalidate: 120 }, // 2 minutes
 	})
-	const revalidateJson = await revalidatedData.json()
+	const json = await response.json()
+	const followerCount = json.total
 
-	console.log({
-		// dynamicJson,
-		revalidateJson,
-	})
-
-	const followerCount = revalidateJson.total
-
-	return (
-		<>
-			<TwitchPoller goal={goal} poller={url} count={followerCount} interval={interval} style={style} prefix={prefix} debug={debug} />
-			{/* <h1>FOLLOWERS: {followerCount}</h1> */}
-		</>
-	)
+	return <TwitchPoller goal={goal} poller={url} count={followerCount} interval={interval} style={style} prefix={prefix} debug={debug} />
 }
