@@ -1,8 +1,8 @@
 'use client'
 
 import { memo, useCallback, useEffect, useState } from 'react'
-import Link from 'next/link'
 
+// import Link from 'next/link'
 import ObsText from '@/components/text/ObsText'
 import { TextStyle } from '@/components/text/TextStyle'
 // import styles from './page.module.css'

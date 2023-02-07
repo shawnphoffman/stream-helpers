@@ -26,12 +26,9 @@ const Render = ({ searchParams }) => {
 	}, [searchParams])
 
 	return (
-		<div>
-			{/* <h1>Render Text</h1> */}
-			<ObsText textStyle={style} debug={debug}>
-				{text}
-			</ObsText>
-		</div>
+		<ObsText textStyle={style} debug={debug}>
+			{text}
+		</ObsText>
 	)
 }
 

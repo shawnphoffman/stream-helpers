@@ -46,7 +46,7 @@ const Home = () => {
 					<li>Debug: Enabling this will prevent the text from fading in and out</li>
 				</ul>
 			</div>
-			<h2>Twitch Follower Goal</h2>
+			<h2>Twitch Follower Goal Variant</h2>
 			<div>Useful for displaying your current follower count and, optionally, your follower goal.</div>
 			<div className="options-container">
 				<h3>Options</h3>
@@ -54,6 +54,9 @@ const Home = () => {
 					<li>ID (required): Your Twitch user ID</li>
 					<li>Goal: Your follower goal. Displayed next to your current follower count</li>
 					<li>Style: Text style to apply to the text. See above.</li>
+					<li>Debug: Enabling this will prevent the text from fading in and out</li>
+					<li>Prefix: The text to put before the follower count</li>
+					{/* <li>xxx: xxx</li> */}
 				</ul>
 			</div>
 			<div className="examples-container">
@@ -93,23 +96,28 @@ const Home = () => {
 				<h3>Twitch Follower Examples</h3>
 				<ul>
 					<li>
-						<a href={`/render/followers/484182774`} target="_blank" rel="noreferrer">
+						<a href={`/render/followers/484182774?debug=true`} target="_blank" rel="noreferrer">
 							Follower count on its own
 						</a>
 					</li>
 					<li>
-						<a href={`/render/followers/484182774?prefix=Followers:`} target="_blank" rel="noreferrer">
+						<a href={`/render/followers/484182774?prefix=Followers:&debug=true`} target="_blank" rel="noreferrer">
 							Follower count with a prefix
 						</a>
 					</li>
 					<li>
-						<a href={`/render/followers/484182774?goal=50`} target="_blank" rel="noreferrer">
+						<a href={`/render/followers/484182774?goal=50&debug=true`} target="_blank" rel="noreferrer">
 							Follower count with a goal
 						</a>
 					</li>
 					<li>
-						<a href={`/render/followers/484182774?style=jump`} target="_blank" rel="noreferrer">
+						<a href={`/render/followers/484182774?style=jump&debug=true`} target="_blank" rel="noreferrer">
 							Follower count with a custom style
+						</a>
+					</li>
+					<li>
+						<a href={`/render/followers/484182774?style=jump&goal=50&prefix=Follower goal:&debug=true`} target="_blank" rel="noreferrer">
+							Kitchen sink
 						</a>
 					</li>
 				</ul>

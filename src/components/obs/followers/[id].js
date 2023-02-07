@@ -34,6 +34,7 @@ export async function getServerSideProps(context) {
 const Followers = ({ id, goal, count, interval }) => {
 	const { query } = useRouter()
 
+	// TWITCH_FOLLOWER_API_URL
 	const { data, error, isLoading } = useSWR(`/api/twitch/followers/${id}?countOnly=true`, fetcher, {
 		refreshInterval: interval,
 		fallbackData: { total: count },
