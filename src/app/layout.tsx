@@ -1,9 +1,10 @@
-import './globals.css'
+import "src/styles/globals.css";
+import "src/styles/obs.css";
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -14,5 +15,5 @@ export default function RootLayout({
       <head />
       <body>{children}</body>
     </html>
-  )
+  );
 }

@@ -1,0 +1,52 @@
+:root {
+	--bg: #012030;
+}
+
+@font-face {
+	font-family: 'BerkeleyMonoVariable';
+	font-style: normal;
+	font-stretch: 100%;
+	font-display: swap;
+	src: url('/fonts/BerkeleyMonoVariable-Regular.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'BerkeleyMonoVariable';
+	font-style: italic;
+	font-stretch: 100%;
+	font-display: swap;
+	src: url('/fonts/BerkeleyMonoVariable-Italic.woff2') format('woff2');
+}
+
+body {
+	font-size: 16px;
+	padding: 0;
+	margin: 0;
+	width: 100vw;
+	height: 100vh;
+	font-family: 'BerkeleyMonoVariable', sans-serif;
+	background-color: var(--bg);
+	color: white;
+}
+
+#__next {
+	margin: 8px;
+}
+
+h1 {
+	color: #dafdba;
+}
+h2 {
+	color: #9aeba3;
+}
+h3 {
+	color: #45c4b0;
+}
+h4 {
+	color: #13678a;
+}
+a {
+	color: white;
+}
+a:hover {
+	color: #9aeba3;
+}
