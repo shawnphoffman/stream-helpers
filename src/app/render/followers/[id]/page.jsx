@@ -26,6 +26,7 @@ export default async function Page({ searchParams, params }) {
 
 	const url = `${fetchUrl}${id}?countOnly=true`
 
+	// https://beta.nextjs.org/docs/api-reference/fetch
 	const response = await fetch(url, {
 		next: { revalidate: 120 }, // 2 minutes
 	})
