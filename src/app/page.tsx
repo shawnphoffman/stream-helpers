@@ -45,6 +45,8 @@ const Home = () => {
 					<li>Text: The text to display</li>
 					<li>Style: The style of text animation. See below</li>
 					<li>Debug: Enabling this will prevent the text from fading in and out</li>
+					<li>InTime: When debug is not set, this determines how long, in seconds, the text will be visible</li>
+					<li>OutTime: When debug is not set, this determines how long, in seconds, the text will NOT be visible</li>
 				</ul>
 			</div>
 			{/*  */}
@@ -92,6 +94,11 @@ const Home = () => {
 					<li>
 						<Link href="/render/text?text=hello&style=none&debug=true" target="_blank" rel="noreferrer">
 							NONE style
+						</Link>
+					</li>
+					<li>
+						<Link href="/render/text?text=hello&style=none&in=3&out=2" target="_blank" rel="noreferrer">
+							In (3 seconds) &amp; out (2 seconds) time example
 						</Link>
 					</li>
 				</ul>
@@ -161,7 +168,6 @@ const Home = () => {
 				{/* https://vercel.com/guides/storybook-with-vercel */}
 				{/* https://github.com/vercel/next.js/tree/canary/examples/with-storybook */}
 				<li>Variable color options</li>
-				<li>Variable in/out visibility options</li>
 				<li>Variable sizing options</li>
 			</ul>
 			{/*  */}

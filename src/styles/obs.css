@@ -1,6 +1,7 @@
 /*  */
 .obs-text {
 	font-size: 36px;
+	transition: opacity 1s cubic-bezier(0.39, 0.575, 0.565, 1);
 }
 
 /*  */
@@ -18,6 +19,10 @@
 }
 .animate {
 	animation: fadeAnimation 60s cubic-bezier(0.39, 0.575, 0.565, 1) infinite;
+}
+
+.hidden {
+	opacity: 0;
 }
 
 /*  */

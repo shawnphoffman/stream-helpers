@@ -17,6 +17,8 @@ export default async function Page(props) {
 	const { id } = params
 
 	const interval = searchParams?.interval || 300000 // 5 mins
+	const inTime = searchParams?.in || 15 // 15 seconds
+	const outTime = searchParams?.out || 45 // 45 seconds
 
 	const goal = searchParams?.goal?.toString() || null
 	const prefix = searchParams?.prefix || ''
@@ -32,7 +34,19 @@ export default async function Page(props) {
 	const json = await response.json()
 	const followerCount = json.total
 
-	return <TwitchPoller goal={goal} poller={url} count={followerCount} interval={interval} style={style} prefix={prefix} debug={debug} />
+	return (
+		<TwitchPoller
+			goal={goal}
+			poller={url}
+			count={followerCount}
+			interval={interval}
+			style={style}
+			prefix={prefix}
+			debug={debug}
+			inTime={inTime}
+			outTime={outTime}
+		/>
+	)
 }
 
 export const dynamic = 'force-dynamic'

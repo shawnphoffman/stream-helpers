@@ -25,8 +25,16 @@ const Render = ({ searchParams }) => {
 		return searchParams?.debug === 'true'
 	}, [searchParams])
 
+	const inTime = useMemo(() => {
+		return searchParams?.in || 15
+	}, [searchParams])
+
+	const outTime = useMemo(() => {
+		return searchParams?.out || 45
+	}, [searchParams])
+
 	return (
-		<ObsText textStyle={style} debug={debug}>
+		<ObsText textStyle={style} debug={debug} inTime={inTime} outTime={outTime}>
 			{text}
 		</ObsText>
 	)

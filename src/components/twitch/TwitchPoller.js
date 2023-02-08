@@ -18,7 +18,7 @@ const fetcher = (...args) => {
 	return fetch(...args).then(res => res.json())
 }
 
-const TwitchPoller = ({ goal, interval, count, poller, prefix, style, debug }) => {
+const TwitchPoller = ({ goal, interval, count, poller, prefix, style, debug, inTime, outTime }) => {
 	const { data, error, isLoading } = useSWR(poller, fetcher, {
 		refreshInterval: interval,
 		fallbackData: { total: count },
@@ -40,7 +40,7 @@ const TwitchPoller = ({ goal, interval, count, poller, prefix, style, debug }) =
 	if (isLoading) return <div>Loading...</div>
 
 	return (
-		<ObsText textStyle={style} debug={debug}>
+		<ObsText textStyle={style} debug={debug} inTime={inTime} outTime={outTime}>
 			{finalText}
 		</ObsText>
 	)
