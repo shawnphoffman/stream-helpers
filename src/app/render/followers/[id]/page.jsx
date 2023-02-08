@@ -16,9 +16,7 @@ export default async function Page(props) {
 	const { params, searchParams } = props
 	const { id } = params
 
-	// TODO
 	const interval = searchParams?.interval || 300000 // 5 mins
-	// const interval = 300000 // 5 mins
 
 	const goal = searchParams?.goal?.toString() || null
 	const prefix = searchParams?.prefix || ''
